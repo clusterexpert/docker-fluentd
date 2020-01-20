@@ -108,5 +108,9 @@ RUN apt-get update \
 
 ENV MALLOC_ARENA_MAX=2
 
+COPY fluentd.conf /etc/google-fluentd/google-fluentd.conf
+
+EXPOSE 24224
+
 ENTRYPOINT ["/entrypoint.sh"]
 CMD ["/usr/sbin/google-fluentd"]
