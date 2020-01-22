@@ -111,6 +111,10 @@ ENV MALLOC_ARENA_MAX=2
 
 COPY fluentd.conf /etc/google-fluentd/google-fluentd.conf
 
+# use patched plugin to tune for PHP
+ADD https://raw.githubusercontent.com/clusterexpert/fluent-plugin-detect-exceptions/master/lib/fluent/plugin/exception_detector.rb \
+    /opt/google-fluentd/embedded/lib/ruby/gems/2.6.0/gems/fluent-plugin-google-cloud-0.7.28/lib/fluent/plugin/exception_detector.rb
+
 EXPOSE 24224
 
 ENTRYPOINT ["/entrypoint.sh"]
